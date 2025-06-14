@@ -1,0 +1,158 @@
+:root {
+  --purple-glow: 163, 66, 255;          
+}
+body {
+  background: #0f0c29;
+  background: radial-gradient(circle at 20% 20%,
+              rgba(var(--purple-glow),0.15) 0%,
+              #0f0c29 35%);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.highlight { color: rgb(var(--purple-glow)); }
+
+/* -------  Navbar  ------- */
+.navbar {
+  background: transparent;          /* keep hero flush‑dark */
+}
+
+/* -------  Avatar  ------- */
+.avatar {
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff 10%, #aaa 80%);
+  box-shadow: 0 0 20px rgba(var(--purple-glow),0.6);
+}
+
+/* -------  Glow cards  ------- */
+.glow {
+  background: rgba(255,255,255,0.05)!important;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 1rem;
+  transition: transform .3s ease, box-shadow .3s ease;
+  text-align: center;
+}
+.glow:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 0 20px rgba(var(--purple-glow),0.6),
+    0 0 40px rgba(var(--purple-glow),0.4);
+}
+
+/* -------  Dark sub‑section  ------- */
+.bg-dark-2 { background-color: #181828; }
+
+/* -------  Project image placeholder  ------- */
+.image-placeholder {
+  background:#333;
+  min-height:220px;
+  border-radius:1rem;
+}
+
+/* -------  Social icons  ------- */
+.socials a {
+  color: rgb(var(--purple-glow));
+  transition: color .3s;
+}
+.socials a:hover { color:#fff; }
+.typewriter h1 {
+      font-size: 3rem;
+      overflow: hidden;
+      border-right: 2px solid rgba(255,255,255,0.75);
+      white-space: nowrap;
+      margin: 0 auto;
+      letter-spacing: 2px;
+      animation: typing 4s steps(30, end) forwards, blink-caret .75s step-end 7;
+      animation-delay: 0s;
+    }
+    @keyframes typing {
+      0% { width: 0 }
+      100% { width: 60% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: rgba(255,255,255,0.75); }
+    }
+
+body {
+      color: white;
+    }
+    .avatar {
+      width: 300px;
+      height: 300px;
+      border-radius: 50%;
+      background-image: url('/protfolio/background/image.png');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 20px rgba(163, 66, 255, 0.6);
+    }
+    .card {
+      border: 1px solid white;
+      color: white;
+    }
+    .about-section {
+      background: radial-gradient(circle at 18% 20%, rgba(163, 66, 255, 0.18) 0%, #0f0c29 40%);
+      overflow: hidden;
+    }
+    .about-img-wrapper {
+      border-radius: 1rem;
+      overflow: hidden;
+      max-width: 350px;
+      margin: 0 auto;
+      box-shadow: 0 0 18px rgba(163, 66, 255, 0.6), 0 0 38px rgba(163, 66, 255, 0.4);
+    }
+    .about-img-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .section-badge {
+      letter-spacing: 1px;
+      font-weight: 600;
+      color: rgb(163, 66, 255);
+    }
+    .about-section ul li {
+      margin-bottom: 0.4rem;
+    }
+.orb-section {
+  background: #0d061f;
+  padding: 4rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #ff5ee9, #7e5fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.orb-icon {
+  width: 48px;
+  height: 48px;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.2));
+  transition: transform 0.3s ease;
+}
+.orb-icon:hover {
+  transform: scale(1.15);
+}
+
+.central-orb {
+  background: radial-gradient(circle, #a342ff 0%, #0d061f 70%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 35px rgba(163, 66, 255, 0.5);
+}
+
+.inner-glow-icon {
+  font-size: 3rem;
+  color: white;
+  text-shadow: 0 0 12px #a342ff;
+}
