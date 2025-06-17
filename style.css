@@ -206,3 +206,16 @@ body {
   border-radius: 50px;
   overflow: hidden;
 }
+.bg-dark-glass {
+  background: rgba(30, 14, 51, 0.6);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.badge.bg-purple {
+  background-color: #9146ff;
+  font-size: 0.8rem;
+  padding: 0.5em 0.75em;
+  border-radius: 20px;
+  font-weight: 500;
+}
