@@ -618,7 +618,7 @@ body {
 
 @media (max-width: 992px) {
   .typewriter h1 { font-size: 2.5rem; }
-  .avatar { width: 150px; height: 150px; }
+  .avatar { width: 300px; height: 300px; }
   .hero-section { min-height: 80vh; }
   .tech-card { padding: 1.5rem 1rem; }
   .project-card { padding: 1.5rem; }
@@ -626,7 +626,7 @@ body {
 
 @media (max-width: 768px) {
   .typewriter h1 { font-size: 2rem; }
-  .avatar { width: 120px; height: 120px; }
+  .avatar { width: 250px; height: 250px; }
   .hero-section { min-height: 70vh; padding: 2rem 0; }
   .section-title { font-size: 2rem; }
   .btn-purple, .btn-outline-purple { padding: 10px 20px; font-size: 0.9rem; }
