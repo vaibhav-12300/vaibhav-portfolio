@@ -1,4 +1,3 @@
-
 :root {
   --purple-primary: #a342ff;
   --purple-light: #b562ff;
@@ -130,6 +129,11 @@ body {
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
   padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
 }
 
 .navbar-scrolled {
@@ -142,6 +146,14 @@ body {
   font-weight: 700;
 }
 
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .navbar-nav .nav-link {
   color: var(--text-primary) !important;
   font-weight: 500;
@@ -149,6 +161,7 @@ body {
   border-radius: 25px;
   transition: all 0.3s ease;
   position: relative;
+  text-decoration: none;
 }
 
 .navbar-nav .nav-link:hover {
@@ -172,15 +185,36 @@ body {
   width: 80%;
 }
 
+/* Mobile Navigation Toggle */
+.navbar-toggler {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* ===== HERO SECTION ===== */
 .hero-section {
   position: relative;
   background: radial-gradient(circle at 50% 50%, rgba(var(--purple-glow), 0.1) 0%, transparent 70%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 80px;
 }
 
 .avatar {
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   border-radius: 50%;
   background: radial-gradient(circle, #fff 10%, #aaa 80%);
   background-image: url('github\ profile.jpg');
@@ -189,6 +223,7 @@ body {
   box-shadow: var(--shadow-purple), var(--shadow-purple-lg);
   border: 4px solid rgba(var(--purple-glow), 0.3);
   transition: all 0.3s ease;
+  margin-top: 40px;
 }
 
 .avatar:hover {
@@ -611,68 +646,274 @@ body {
   transform: translate(0);
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 1200px) {
-  .container { max-width: 100%; padding: 0 2rem; }
-}
+/* ===== MAIN MEDIA QUERY FIXES ===== */
 
+/* 1. Fix navbar collapse overlap issue */
 @media (max-width: 992px) {
-  .typewriter h1 { font-size: 2.5rem; }
-  .avatar { width: 300px; height: 300px; }
-  .hero-section { min-height: 80vh; }
-  .tech-card { padding: 1.5rem 1rem; }
-  .project-card { padding: 1.5rem; }
-}
-
-@media (max-width: 768px) {
-  .typewriter h1 { font-size: 2rem; }
-  .avatar { width: 250px; height: 250px; }
-  .hero-section { min-height: 70vh; padding: 2rem 0; }
-  .section-title { font-size: 2rem; }
-  .btn-purple, .btn-outline-purple { padding: 10px 20px; font-size: 0.9rem; }
-  .tech-logo { width: 40px; height: 40px; }
-  .skill-icon { width: 40px; height: 40px; }
-  .contact-icon { width: 50px; height: 50px; font-size: 1.2rem; }
-  .social-link { width: 45px; height: 45px; font-size: 1.1rem; }
-  .back-to-top { width: 45px; height: 45px; bottom: 20px; right: 20px; }
-}
-
-@media (max-width: 576px) {
-  .container { padding: 0 1rem; }
-  .typewriter h1 { font-size: 1.8rem; letter-spacing: 1px; }
-  .navbar-brand { font-size: 1.3rem; }
-  .hero-buttons .btn { margin: 0.25rem; font-size: 0.95rem; }
-  .tech-card, .skill-item, .contact-item { padding: 1rem; }
-  .project-card { padding: 1rem; }
-  .achievement-item { padding: 0.75rem; }
-  .about-img-wrapper { max-width: 280px; }
-}
-
-/* ===== CUSTOM SCROLLBAR ===== */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: var(--bg-secondary); }
-::-webkit-scrollbar-thumb {
-  background: linear-gradient(135deg, var(--purple-primary), var(--purple-light));
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(135deg, var(--purple-light), var(--purple-primary));
-}
-
-/* ===== ACCESSIBILITY ===== */
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  .navbar-collapse {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: rgba(15, 12, 41, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 80px 0 2rem;
+    transition: left 0.3s ease; /* Changed from 'all' to 'left' for better performance */
+    z-index: 1050; /* Increased z-index to ensure it's above other elements */
+    border-right: 1px solid var(--glass-border);
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.3);
   }
   
-  .particles { display: none; }
+  .navbar-collapse.show {
+    left: 0;
+  }
+  
+  /* Fix navbar toggler positioning */
+  .navbar-toggler {
+    display: block;
+    position: relative;
+    z-index: 1051; /* Higher than collapse */
+  }
+  
+  /* Add overlay */
+  .navbar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1049; /* Below navbar but above content */
+  }
+  
+  .navbar-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
-/* ===== PRINT STYLES ===== */
+/* 2. Fix mobile layout issues */
+@media (max-width: 768px) {
+  /* Fix hero section spacing */
+  .hero-section {
+    min-height: 100vh; /* Changed back to 100vh for better mobile experience */
+    padding: 100px 0 2rem; /* Added top padding for fixed navbar */
+  }
+  
+  /* Fix typewriter animation on mobile */
+  .typewriter h1 { 
+    font-size: 2rem; 
+    white-space: normal; /* Allow text wrapping on very small screens */
+    border-right: none; /* Remove cursor on mobile for better UX */
+    animation: none; /* Disable animation on mobile for performance */
+  }
+  
+  /* Fix avatar sizing */
+  .avatar { 
+    width: 250px; 
+    height: 250px; 
+    margin-top: 20px; /* Reduced margin */
+  }
+  
+  /* Fix button layout */
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  
+  .hero-buttons .btn {
+    width: 220px; /* Consistent width */
+    margin: 0; /* Remove default margins */
+  }
+}
+
+/* 3. Fix small mobile issues */
+@media (max-width: 576px) {
+  /* Fix navbar brand */
+  .navbar-brand { 
+    font-size: 1.3rem; 
+  }
+  
+  /* Fix sidebar width on very small screens */
+  .navbar-collapse {
+    width: 100%; /* Full width on very small screens */
+    max-width: none;
+  }
+  
+  /* Fix avatar for small screens */
+  .avatar {
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+  }
+  
+  /* Fix hero section */
+  .hero-section {
+    padding: 90px 0 1rem;
+    min-height: 100vh;
+  }
+  
+  /* Fix typewriter */
+  .typewriter h1 { 
+    font-size: 1.8rem; 
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  /* Fix buttons */
+  .hero-buttons .btn { 
+    width: 200px;
+    font-size: 0.9rem;
+    padding: 10px 20px;
+  }
+  
+  /* Fix container padding */
+  .container { 
+    padding-left: 1rem; 
+    padding-right: 1rem; 
+  }
+}
+
+/* 4. Fix landscape mobile orientation */
+@media (max-width: 992px) and (orientation: landscape) {
+  .hero-section {
+    min-height: 100vh;
+    padding: 80px 0 1rem;
+  }
+  
+  .avatar {
+    width: 200px;
+    height: 200px;
+  }
+  
+  .typewriter h1 {
+    font-size: 2rem;
+  }
+}
+
+/* 5. Fix ultra-wide screen issues */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1320px;
+  }
+  
+  .typewriter h1 {
+    font-size: 4rem;
+  }
+  
+  .avatar {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* 6. Fix tablet portrait issues */
+@media (min-width: 768px) and (max-width: 992px) {
+  .navbar-collapse {
+    position: relative;
+    width: auto;
+    height: auto;
+    background: transparent;
+    backdrop-filter: none;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0;
+    z-index: auto;
+    border: none;
+    box-shadow: none;
+  }
+  
+  .navbar-nav {
+    flex-direction: row;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem !important;
+    border-bottom: none;
+  }
+  
+  .navbar-toggler {
+    display: none;
+  }
+  
+  .hero-section {
+    padding: 100px 0 2rem;
+  }
+}
+
+/* 7. Fix specific breakpoint conflicts */
+@media (max-width: 991.98px) {
+  /* Use Bootstrap's exact breakpoint */
+  .navbar-expand-lg .navbar-nav {
+    flex-direction: column;
+  }
+  
+  .navbar-expand-lg .navbar-toggler {
+    display: block;
+  }
+}
+
+/* 8. Fix iOS Safari specific issues */
+@supports (-webkit-touch-callout: none) {
+  .hero-section {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  .navbar-collapse {
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+}
+
+/* 9. Add missing hover states for touch devices */
+@media (hover: none) {
+  .tech-card:hover,
+  .skill-item:hover,
+  .project-card:hover,
+  .contact-item:hover {
+    transform: none;
+  }
+  
+  .btn-purple:hover,
+  .btn-outline-purple:hover {
+    transform: none;
+  }
+}
+
+/* 10. Fix print media query */
 @media print {
-  .navbar, .back-to-top, .particles { display: none !important; }
-  body { background: white !important; color: black !important; }
-  .text-purple { color: #6c757d !important; }
+  .navbar, 
+  .back-to-top, 
+  .particles, 
+  .navbar-toggler, 
+  .navbar-overlay,
+  .social-links { 
+    display: none !important; 
+  }
+  
+  body { 
+    background: white !important; 
+    color: black !important; 
+    font-size: 12pt;
+  }
+  
+  .hero-section,
+  .about-section,
+  .experience-section,
+  .skills-section,
+  .projects-section,
+  .contact-section {
+    page-break-inside: avoid;
+    background: white !important;
+  }
 }
